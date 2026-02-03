@@ -34,4 +34,67 @@ Version 1.0 constitutes the canonical baseline of this system, explicitly positi
 ---
 
 ## Repository Structure
+.
+├── src/
+│ └── daiss_core.py # DAISS core implementation (the "Constitution")
+├── tests/
+│ └── daiss_sim_verify.py # CIFF verifier (the "Judge")
+├── docs/
+│ └── canonical.tex # χ-model theory (the "Scripture")
+├── README.md
+└── LICENSE
+
+
+---
+
+## Design Principles
+
+- **Human Sovereignty First**  
+  AI systems are treated strictly as tools. Authorship, responsibility, and risk remain human.
+
+- **Verification over Authority**  
+  CIFF is a locally executable protocol, not a centralized judge or reputation system.
+
+- **Growth over Finality**  
+  This repository is intentionally incomplete. Evolution, refutation, and restructuring are first-class behaviors.
+
+---
+
+## CIFF: What It Is (and Is Not)
+
+**CIFF is:**
+- A verification protocol for human–AI asymmetry
+- A local, inspectable process
+- A safeguard against silent automation of cognition
+
+**CIFF is not:**
+- A global certification authority
+- A productivity KPI
+- A surveillance or ranking mechanism
+
+---
+
+## Related Canonical Artifact
+
+- **Zenodo (v1.0 – Canonical Release)**  
+  Marutani, Y. (2026).  
+  *KPI Circular Trap and Spiral Escape via Decentralized Learning Pipelines*  
+  DOI: https://doi.org/10.5281/zenodo.18470162
+
+---
+
+## Open Issues (Intentional)
+
+This project explicitly exposes its future negation points.
+
+- **Issue #1**: Formalizing responsibility density in the χ-model  
+- **Issue #2**: Integration of AI-assisted sensemaking logs  
+- **Issue #3**: Migration toward decentralized proof-of-mind mechanisms
+
+---
+
+## License
+
+This project is released under an open license to encourage inspection, critique, and reimplementation.
+No warranty is provided. Responsibility remains with the human operator.
 
