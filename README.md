@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18470162.svg)](https://doi.org/10.5281/zenodo.18470162)
+
 # The KPI Circular Trap and Spiral Escape  
 ### v1.0 – Canonical Release
 
