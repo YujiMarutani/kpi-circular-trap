@@ -9,7 +9,8 @@
 ## Status
 
 **CIFF Status:** Experimental / Local Verification Only  
-This repository does not assert any global authority or centralized certification.
+This repository does not assert any global authority or centralized certification,
+nor does it produce normative judgments.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18470162.svg)](https://doi.org/10.5281/zenodo.18470162)
 
