@@ -1,2 +1,37 @@
-# kpi-circular-trap
-A canonical research artifact exposing the KPI Circular Trap and a spiral escape via decentralized learning pipelines, χ-model sovereignty, and CIFF verification.
+# The KPI Circular Trap and Spiral Escape  
+### v1.0 – Canonical Release
+
+> A growth-oriented institutional artifact for human sovereignty  
+> in the age of AI.
+
+---
+
+## Status
+
+**CIFF Status:** Experimental / Local Verification Only  
+This repository does not assert any global authority or centralized certification.
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18470162.svg)](https://doi.org/10.5281/zenodo.18470162)
+
+---
+
+## Abstract
+
+Advanced economies face persistent productivity stagnation despite increasingly sophisticated performance indicators.
+This project defines the root cause of this stagnation as the **KPI Circular Trap**: a self-referential loop in which low-resolution consensus metrics suppress high-resolution individual sovereignty.
+
+We formalize individual sovereignty using the χ-model and propose a decentralized learning pipeline connecting open educational resources (OCW), AI-assisted sensemaking, and decentralized validation mechanisms.
+This pipeline enables individuals to bypass institutional filtering and reconstruct knowledge at higher semantic resolution.
+
+The central contribution of this work is not only the presentation of a theoretical framework, but the implementation of a verification apparatus, **CIFF (Continuous Integration for Fundamental Freedom)**, which evaluates whether knowledge artifacts are generated under human sovereignty rather than autonomous AI production.
+CIFF operationalizes this distinction through asymmetry-based verification, examining semantic deviation, responsibility density in code, and iterative self-negation across versions.
+
+This repository represents a **growth-oriented publication model**, where the DOI corresponds to a continuously evolving institutional artifact rather than a finalized conclusion.
+Version 1.0 constitutes the canonical baseline of this system, explicitly positioning the project as a dynamic protocol aiming to satisfy the condition:
+
+> **dχ / dt ≥ 0**
+
+---
+
+## Repository Structure
+
