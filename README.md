@@ -31,6 +31,12 @@ Version 1.0 constitutes the canonical baseline of this system, explicitly positi
 
 > **dχ / dt ≥ 0**
 
+## Canonical Release
+
+The PDF included in this repository is identical to the Zenodo v1.0 canonical release
+(https://doi.org/10.5281/zenodo.18470162) and is provided here for inspection and verification.
+The Zenodo record remains the authoritative DOI-bearing artifact.
+
 ---
 
 ## Repository Structure
