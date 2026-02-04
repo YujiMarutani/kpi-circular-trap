@@ -57,30 +57,83 @@ def generate_illustrative_plot(current, references, e_thresh, r_thresh):
     plt.savefig("artifacts/plots/v1_3_matrix.png")
     print(f"Visualization saved to: artifacts/plots/v1_3_matrix.png")
 
-if __name__ == "__main__":
-    verify_v1_3_protocol()
-
+import numpy as np
+import sys
+import os
 import json
+import matplotlib.pyplot as plt
 from datetime import datetime
+from entropy_utils import compute_v1_3_metrics
 
-report = {
-    "protocol": "CIFF v1.3",
-    "timestamp": datetime.utcnow().isoformat() + "Z",
-    "metrics": {
-        "E_t": float(metrics["E_t"]),
-        "R_t": float(metrics["R_t"])
-    },
-    "relative_position": {
-        "quadrant": "Upper-Right" if is_upper_right else "Alternative",
-        "reference": "local_context_75_percentile"
-    },
-    "sovereignty_statement": {
-        "judgement": None,
-        "classification": None,
-        "authority": "local_execution_only"
-    },
-    "note": "State report only. No normative evaluation."
-}
+
+def verify_v1_3_protocol():
+    """
+    CIFF v1.3 — Sovereign State Reporting Protocol.
+
+    Reports the cognitive state using Semantic Radius (E_t)
+    and Kripkean Robustness (R_t) without issuing judgment
+    or enforcing normative classification.
+    """
+
+    # 1. Environment Setup
+    os.makedirs("artifacts/plots", exist_ok=True)
+    os.makedirs("artifacts/reports", exist_ok=True)
+
+    # 2. Data Acquisition (Simulated Interaction)
+    current_idea = np.random.normal(0.2, 0.05, 128)
+    context_history = np.random.normal(0, 0.05, (10, 128))
+
+    # 3. Metric Computation
+    metrics = compute_v1_3_metrics(current_idea, context_history)
+
+    # 4. Relative Thresholding (Context-Aware)
+    reference_r_values = [
+        compute_v1_3_metrics(v, context_history)["R_t"]
+        for v in context_history
+    ]
+    r_threshold = np.percentile(reference_r_values, 75)
+    e_threshold = 0.15
+
+    is_upper_right = (
+        metrics["E_t"] > e_threshold and
+        metrics["R_t"] > r_threshold
+    )
+
+    # 5. State Reporting (Console)
+    print(f"--- DAISS CIFF v1.3 Protocol Report ---")
+    print(f"Semantic Radius (E_t): {metrics['E_t']:.4f} (Ref: >{e_threshold})")
+    print(f"Kripkean Robustness (R_t): {metrics['R_t']:.4f} (Ref: >{r_threshold:.2f} [75th percentile])")
+    print(f"Current State: {'Upper-Right Alignment' if is_upper_right else 'Alternative Quadrant'}")
+
+    # 6. Visualization Artifact
+    generate_illustrative_plot(metrics, reference_r_values, e_threshold, r_threshold)
+
+    # 7. Sovereignty State Report (JSON Artifact)
+    report = {
+        "protocol": "CIFF v1.3",
+        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "metrics": {
+            "E_t": float(metrics["E_t"]),
+            "R_t": float(metrics["R_t"])
+        },
+        "relative_position": {
+            "quadrant": "Upper-Right" if is_upper_right else "Alternative",
+            "reference": "local_context_75_percentile"
+        },
+        "sovereignty_statement": {
+            "judgement": None,
+            "classification": None,
+            "authority": "local_execution_only"
+        },
+        "note": "State report only. No normative evaluation."
+    }
+
+    with open("artifacts/reports/sovereignty_report.json", "w") as f:
+        json.dump(report, f, indent=2)
+
+    # 8. CI Continuity
+    sys.exit(0)
+
 
 os.makedirs("artifacts/reports", exist_ok=True)
 with open("artifacts/reports/sovereignty_report.json", "w") as f:
