@@ -60,3 +60,28 @@ def generate_illustrative_plot(current, references, e_thresh, r_thresh):
 if __name__ == "__main__":
     verify_v1_3_protocol()
 
+import json
+from datetime import datetime
+
+report = {
+    "protocol": "CIFF v1.3",
+    "timestamp": datetime.utcnow().isoformat() + "Z",
+    "metrics": {
+        "E_t": float(metrics["E_t"]),
+        "R_t": float(metrics["R_t"])
+    },
+    "relative_position": {
+        "quadrant": "Upper-Right" if is_upper_right else "Alternative",
+        "reference": "local_context_75_percentile"
+    },
+    "sovereignty_statement": {
+        "judgement": None,
+        "classification": None,
+        "authority": "local_execution_only"
+    },
+    "note": "State report only. No normative evaluation."
+}
+
+os.makedirs("artifacts/reports", exist_ok=True)
+with open("artifacts/reports/sovereignty_report.json", "w") as f:
+    json.dump(report, f, indent=2)
