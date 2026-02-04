@@ -2,7 +2,9 @@ name: CIFF v1.3 State Report
 
 on:
   pull_request:
+    branches: [ main ]
   workflow_dispatch:
+
 
 jobs:
   ciff-v1-3:
