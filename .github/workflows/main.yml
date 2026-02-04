@@ -1,0 +1,32 @@
+name: CIFF v1.3 State Report
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  ciff-v1-3:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install numpy matplotlib
+
+      - name: Run CIFF v1.3 protocol
+        run: |
+          python src/verify_v1_3_protocol.py
+
+      - name: Upload CIFF artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ciff-v1-3-artifacts
+          path: artifacts/
