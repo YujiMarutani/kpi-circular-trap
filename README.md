@@ -107,3 +107,9 @@ This project explicitly exposes its future negation points.
 This project is released under an open license to encourage inspection, critique, and reimplementation.
 No warranty is provided. Responsibility remains with the human operator.
 
+## v1.3 – Kripkean Robustness (Dynamic Sovereignty)
+
+- Added Semantic Radius (E_t) for trajectory divergence
+- Added Kripkean Robustness (R_t) for fixed-designator stability
+- Added v1.3 Intelligence Matrix visualization
+- Introduced CIFF v1.3 State Reporting Protocol
