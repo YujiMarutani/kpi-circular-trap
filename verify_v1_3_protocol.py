@@ -2,13 +2,14 @@ import numpy as np
 import sys
 import os
 import matplotlib.pyplot as plt
+import json
+from datetime import datetime
 from entropy_utils import compute_v1_3_metrics
-
 
 def verify_v1_3_protocol():
     """
     CIFF v1.3: Sovereign State Reporting Protocol.
-    Reports state only. No judgement. No authority.
+    This script reports the intelligence state without assuming judicial authority.
     """
     # 1. Environment Setup
     os.makedirs("artifacts/plots", exist_ok=True)
@@ -34,19 +35,16 @@ def verify_v1_3_protocol():
         metrics["R_t"] > r_threshold
     )
 
-    # 5. State Reporting (stdout)
-    print("--- DAISS CIFF v1.3 Protocol Report ---")
-    print(f"Semantic Radius (E_t): {metrics['E_t']:.4f} (>{e_threshold})")
-    print(f"Kripkean Robustness (R_t): {metrics['R_t']:.4f} (>75th pct)")
+    # 5. State Reporting
+    print(f"--- DAISS CIFF v1.3 Protocol Report ---")
+    print(f"Semantic Radius (E_t): {metrics['E_t']:.4f} (Ref: >{e_threshold})")
+    print(f"Kripkean Robustness (R_t): {metrics['R_t']:.4f} (Ref: >{r_threshold:.2f} [75th percentile])")
     print(f"Current State: {'Upper-Right Alignment' if is_upper_right else 'Alternative Quadrant'}")
 
     # 6. Visualization
     generate_illustrative_plot(metrics, reference_r_values, e_threshold, r_threshold)
 
-    # 7. Sovereignty State Report (JSON Artifact)
-    import json
-    from datetime import datetime
-
+    # 7. JSON Artifact (Sovereignty State Report)
     report = {
         "protocol": "CIFF v1.3",
         "timestamp": datetime.utcnow().isoformat() + "Z",
@@ -74,21 +72,16 @@ def verify_v1_3_protocol():
 
 
 def generate_illustrative_plot(current, references, e_thresh, r_thresh):
-    """Illustrative v1.3 Intelligence Matrix."""
     plt.figure(figsize=(8, 6))
-    plt.axhline(r_thresh, linestyle="--", alpha=0.5)
-    plt.axvline(e_thresh, linestyle="--", alpha=0.5)
+    plt.axhline(r_thresh, color='gray', linestyle='--', alpha=0.5)
+    plt.axvline(e_thresh, color='gray', linestyle='--', alpha=0.5)
 
-    plt.scatter([0.1] * len(references), references, alpha=0.3, label="Reference Contexts")
-    plt.scatter(current["E_t"], current["R_t"], s=100, label="Current Node")
+    plt.scatter([0.1]*len(references), references, color='blue', alpha=0.3, label='Reference Contexts')
+    plt.scatter(current["E_t"], current["R_t"], color='red', s=100, label='Current Node')
 
+    plt.title("Intelligence Matrix (Illustrative Visualization v1.3)")
     plt.xlabel("Semantic Radius (E_t)")
     plt.ylabel("Kripkean Robustness (R_t)")
-    plt.title("CIFF v1.3 Intelligence Matrix")
     plt.legend()
-    plt.tight_layout()
     plt.savefig("artifacts/plots/v1_3_matrix.png")
-
-
-if __name__ == "__main__":
-    verify_v1_3_protocol()
+    print("Visualization saved to artifacts/plots/v1_3_matrix.png")
